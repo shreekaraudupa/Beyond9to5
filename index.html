@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond 9 TO 5 Stories — with Shree</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest:   #1a1614;
+      --canopy:   #2a2220;
+      --amber:    #c2502a;
+      --amber-lt: #d96b3e;
+      --stone:    #1e1a18;
+      --pebble:   #8a8078;
+      --cream:    #f5ede4;
+      --cream-lt: #faf6f3;
+      --white:    #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream-lt);
+      color: var(--stone);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    /* ─── Grain texture overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(26, 22, 20, 0.92);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--amber-lt); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(244, 237, 224, 0.75);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--amber-lt); }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 5rem 2.5rem 5rem;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1584395631446-e41b0fc3f68d?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(20, 14, 12, 0.82) 0%, rgba(20, 14, 12, 0.45) 60%, rgba(20, 14, 12, 0.2) 100%),
+        linear-gradient(to top,   rgba(20, 14, 12, 0.95) 0%, rgba(20, 14, 12, 0.5) 35%, transparent 65%),
+        radial-gradient(ellipse at 72% 28%, rgba(194, 80, 42, 0.12) 0%, transparent 55%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber-lt);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--amber);
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--amber-lt);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(244, 237, 224, 0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: var(--amber);
+      color: var(--cream-lt);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow:
+        0 2px 6px rgba(194, 80, 42, 0.25),
+        0 8px 24px rgba(194, 80, 42, 0.15);
+    }
+    .hero-cta:hover {
+      background: var(--amber-lt);
+      transform: translateY(-2px);
+      box-shadow:
+        0 4px 12px rgba(194, 80, 42, 0.35),
+        0 16px 40px rgba(194, 80, 42, 0.2);
+    }
+    .hero-cta:active { transform: translateY(0); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(244, 237, 224, 0.4);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, transparent, rgba(194, 80, 42, 0.6));
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /* ─── Section base ─── */
+    section { padding: 6rem 2.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    /* ─── About ─── */
+    .about { background: var(--cream-lt); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 60%;
+      height: 60%;
+      border: 2px solid var(--amber);
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .about-img-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 0.85rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.25),
+        0 1px 4px rgba(0,0,0,0.15);
+    }
+    .about-img-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--amber-lt);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .about-text h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--forest);
+      margin-bottom: 1.25rem;
+    }
+    .about-text p {
+      font-size: 0.975rem;
+      color: #4a4040;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.75rem;
+    }
+    .tag {
+      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(26, 22, 20, 0.2);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--canopy);
+      background: rgba(42, 34, 32, 0.06);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Adventures ─── */
+    .adventures { background: var(--cream); }
+    .adventures h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+    .adventures-sub {
+      font-size: 0.975rem;
+      color: var(--pebble);
+      max-width: 480px;
+      margin-bottom: 3.5rem;
+    }
+    .adventures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .adv-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--forest);
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow:
+        0 4px 12px rgba(26, 22, 20, 0.15),
+        0 16px 40px rgba(26, 22, 20, 0.1);
+    }
+    .adv-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow:
+        0 8px 24px rgba(26, 22, 20, 0.2),
+        0 24px 56px rgba(26, 22, 20, 0.15);
+    }
+    .adv-card:active { transform: translateY(-3px) scale(1.005); }
+    .adv-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.55;
+      transition: opacity 0.3s ease, transform 0.5s ease;
+    }
+    .adv-card:hover .adv-img {
+      opacity: 0.45;
+      transform: scale(1.05);
+    }
+    .adv-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20, 14, 12, 0.95) 0%, rgba(20, 14, 12, 0.3) 55%, transparent 100%);
+    }
+    .adv-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.75rem;
+      z-index: 2;
+    }
+    .adv-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .adv-card h3 {
+      font-size: 1.35rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .adv-card p {
+      font-size: 0.8rem;
+      color: rgba(244, 237, 224, 0.65);
+      line-height: 1.6;
+    }
+    .adv-tag {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      background: var(--amber);
+      color: var(--cream);
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Stories ─── */
+    .stories { background: var(--forest); }
+    .stories-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .stories .section-label { color: var(--amber-lt); }
+    .stories h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--cream);
+      margin-bottom: 0;
+    }
+    .stories-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber-lt);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s ease, opacity 0.2s ease;
+      white-space: nowrap;
+      padding-bottom: 0.25rem;
+    }
+    .stories-link:hover { gap: 0.75rem; opacity: 0.8; }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .story-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--canopy);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.3),
+        0 20px 48px rgba(0,0,0,0.2);
+    }
+    .story-card:active { transform: translateY(-2px); }
+    .story-card.featured { grid-row: span 2; }
+    .story-img {
+      width: 100%;
+      background: #201a18;
+    }
+    .story-card.featured .story-img { height: 280px; }
+    .story-card:not(.featured) .story-img { height: 140px; }
+    .story-img-inner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .story-img-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20, 14, 12, 0.7) 0%, transparent 60%);
+    }
+    .story-body { padding: 1.5rem 1.5rem 1.75rem; }
+    .story-category {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber-lt);
+      margin-bottom: 0.6rem;
+    }
+    .story-card h3 {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .story-card.featured h3 { font-size: 1.5rem; }
+    .story-card p {
+      font-size: 0.8rem;
+      color: rgba(244, 237, 224, 0.55);
+      line-height: 1.65;
+    }
+    .story-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: rgba(244, 237, 224, 0.38);
+    }
+    .story-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; }
+
+    /* ─── Coming Soon Badge ─── */
+    .story-img { position: relative; }
+    .coming-soon-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(8, 5, 3, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(240, 184, 74, 0.22);
+      border-radius: 999px;
+      padding: 5px 11px 5px 8px;
+      z-index: 5;
+    }
+    .cs-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      flex-shrink: 0;
+      animation: cs-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes cs-pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.85); box-shadow: 0 0 0 0 rgba(212,133,31,0); }
+      50%       { opacity: 1;    transform: scale(1.1);  box-shadow: 0 0 0 4px rgba(212,133,31,0.12); }
+    }
+    .cs-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #c8780e 0%, #f0b84a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Philosophy ─── */
+    .philosophy {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(194, 80, 42, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 75%, rgba(42, 34, 32, 0.15) 0%, transparent 50%),
+        var(--cream-lt);
+      text-align: center;
+    }
+    .philosophy-quote {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .philosophy-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-style: italic;
+      color: var(--forest);
+      line-height: 1.35;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    .philosophy-quote blockquote em { color: var(--amber); font-style: normal; }
+    .philosophy-quote cite {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pebble);
+      font-style: normal;
+    }
+    .quote-divider {
+      width: 3rem;
+      height: 2px;
+      background: var(--amber);
+      margin: 0 auto 1rem;
+      border: none;
+    }
+
+    /* ─── Stats ─── */
+    .stats { background: var(--cream); padding: 4rem 2.5rem; border-top: 1px solid rgba(26,22,20,0.08); border-bottom: 1px solid rgba(26,22,20,0.08); }
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .stat-num span { color: var(--amber); }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pebble);
+      margin-top: 0.5rem;
+    }
+
+    /* ─── Contact ─── */
+    .contact {
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(194, 80, 42, 0.15) 0%, transparent 55%),
+        linear-gradient(170deg, #120e0c 0%, #1a1614 60%, #120e0c 100%);
+      text-align: center;
+      padding: 7rem 2.5rem;
+    }
+    .contact .section-label { color: var(--amber-lt); }
+    .contact h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .contact p {
+      font-size: 0.975rem;
+      color: rgba(244, 237, 224, 0.6);
+      max-width: 440px;
+      margin: 0 auto 2.5rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .contact-btn.primary {
+      background: var(--amber);
+      color: var(--cream);
+      box-shadow: 0 4px 16px rgba(194, 80, 42, 0.3), 0 8px 32px rgba(194, 80, 42, 0.15);
+    }
+    .contact-btn.primary:hover {
+      background: var(--amber-lt);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(194, 80, 42, 0.4), 0 16px 48px rgba(194, 80, 42, 0.2);
+    }
+    .contact-btn.secondary {
+      border: 1px solid rgba(244, 237, 224, 0.25);
+      color: rgba(244, 237, 224, 0.8);
+    }
+    .contact-btn.secondary:hover {
+      border-color: rgba(244, 237, 224, 0.5);
+      color: var(--cream);
+      transform: translateY(-3px);
+      background: rgba(244, 237, 224, 0.07);
+    }
+    .contact-btn:active { transform: translateY(-1px); }
+    .social-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .social-link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244, 237, 224, 0.35);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .social-link:hover { color: var(--amber-lt); }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--stone);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      color: rgba(244, 237, 224, 0.5);
+    }
+    .footer-brand span { color: var(--amber); }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(244, 237, 224, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .adventures-grid { grid-template-columns: 1fr; }
+      .stories-grid { grid-template-columns: 1fr; }
+      .story-card.featured { grid-row: auto; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .stories-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 5rem 1.5rem 4rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <div class="nav-logo">Beyond <span>9 to 5</span> Stories</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#adventures">Adventures</a></li>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="#contact">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Shreekara Udupa &nbsp;·&nbsp; Developer & Explorer</p>
+      <h1>Life Happens<br /><em>Beyond</em> the<br />9 to 5</h1>
+      <p class="hero-sub">Real stories from the trail, the road, and everywhere in between — told by a developer who chose to live every hour, not just the off-clock ones.</p>
+      <a href="#stories" class="hero-cta">
+        Read the Stories
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Mountains Trekked</div>
+      </div>
+      <div>
+        <div class="stat-num">8<span>k</span></div>
+        <div class="stat-label">Km on the Bike</div>
+      </div>
+      <div>
+        <div class="stat-num">20<span>+</span></div>
+        <div class="stat-label">Destinations</div>
+      </div>
+      <div>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Stories to Tell</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img class="about-img" src="brand_assets/IMG_6571.jpg" alt="Shreekara Udupa on a Himalayan trek" />
+          <div class="about-img-accent"></div>
+          <div class="about-img-badge">
+            <strong>Shree</strong>
+            Developer &amp; Explorer
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-label">About Me</p>
+          <h2>Building code by day,<br />trails by weekend.</h2>
+          <p>Hey, I'm Shreekara Udupa — most people call me Shree. By profession I'm a developer, by passion I'm a wanderer who finds the best debug sessions happen at 12,000 feet above sea level.</p>
+          <p>I started this space because I got tired of the narrative that life only begins after you clock out on Friday. Every trek, every long ride, every late-night train to nowhere has taught me something a textbook couldn't.</p>
+          <p>"Beyond 9 to 5 Stories" is where I share those moments — raw, honest, and usually involving either extreme weather or questionable roadside food.</p>
+          <div class="about-tags">
+            <span class="tag">🏔 High-Altitude Trekker</span>
+            <span class="tag">🚴 Long-Distance Biker</span>
+            <span class="tag">✈️ Travel Enthusiast</span>
+            <span class="tag">💻 Full-Stack Developer</span>
+            <span class="tag">📸 Amateur Photographer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVENTURES -->
+  <section class="adventures" id="adventures">
+    <div class="container">
+      <p class="section-label">What I Live For</p>
+      <h2>My Passions.<br />Infinite Stories.</h2>
+      <p class="adventures-sub">Every mountain, every road, every country — a different lens for the same question: what does it mean to really live?</p>
+      <div class="adventures-grid">
+        <div class="adv-card">
+          <div class="adv-img" style="background-image: url('brand_assets/trekking.jpg'); background-position: center center;"></div>
+          <div class="adv-overlay"></div>
+          <span class="adv-tag">Trek</span>
+          <div class="adv-content">
+            <span class="adv-icon">🏔</span>
+            <h3>Trekking</h3>
+            <p>From the Western Ghats to the Himalayas — where the air thins and the mind clears.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-img" style="background-image: url('brand_assets/bike.jpg'); background-position: center top;"></div>
+          <div class="adv-overlay"></div>
+          <span class="adv-tag">Ride</span>
+          <div class="adv-content">
+            <span class="adv-icon">🚴</span>
+            <h3>Bike Rides</h3>
+            <p>Coastal highways, mountain passes, and everything in between — two wheels, zero limits.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-img" style="background-image: url('brand_assets/travel-2.jpg'); background-position: right center;"></div>
+          <div class="adv-overlay"></div>
+          <span class="adv-tag">Travel</span>
+          <div class="adv-content">
+            <span class="adv-icon">✈️</span>
+            <h3>World Travel</h3>
+            <p>New cultures, strange cities, unexpected friendships — the world is the best classroom.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="philosophy-quote">
+      <p class="section-label" style="text-align:center;">The Ethos</p>
+      <hr class="quote-divider" />
+      <blockquote>
+        "The code will still be there Monday. The <em>summit</em> only waits for those who show up."
+      </blockquote>
+      <cite>— Shreekara Udupa</cite>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories" id="stories">
+    <div class="container">
+      <div class="stories-header">
+        <div>
+          <p class="section-label">Latest Stories</p>
+          <h2>Life Beyond 9–5</h2>
+        </div>
+        <a href="#" class="stories-link">
+          All Stories
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="stories-grid">
+        <!-- Featured: Bali Pass Trek 2026 -->
+        <div class="story-card featured" onclick="window.location='trekking/bali-pass/'" style="cursor:pointer;">
+          <div class="story-img">
+            <div class="story-img-inner" style="height:280px; background:linear-gradient(135deg, #0f2018 0%, #07120d 100%);"></div>
+          </div>
+          <div class="story-body">
+            <p class="story-category">Trekking</p>
+            <h3>Bali Pass Trek — Crossing 16,200 ft in the Heart of Garhwal</h3>
+            <p>One of Uttarakhand's most remote passages — glaciers, high meadows, and ridgelines that feel like the edge of the world.</p>
+            <div class="story-meta">
+              <span>2026</span>
+            </div>
+          </div>
+        </div>
+        <!-- Kuari Pass Trek 2023 -->
+        <div class="story-card coming-soon">
+          <div class="story-img">
+            <div class="story-img-inner" style="height:140px; background:linear-gradient(135deg, #101a28 0%, #080f18 100%);"></div>
+            <div class="coming-soon-badge"><div class="cs-dot"></div><span class="cs-label">Coming Soon</span></div>
+          </div>
+          <div class="story-body">
+            <p class="story-category">Trekking</p>
+            <h3>Kuari Pass Trek — Rooftop of the Chamoli District</h3>
+            <p>Panoramic Himalayan ridgelines on the trail Lord Curzon once walked.</p>
+            <div class="story-meta">
+              <span>2023</span>
+            </div>
+          </div>
+        </div>
+        <!-- Brahmatal Trek 2021 -->
+        <div class="story-card coming-soon">
+          <div class="story-img">
+            <div class="story-img-inner" style="height:140px; background:linear-gradient(135deg, #141428 0%, #0a0a18 100%);"></div>
+            <div class="coming-soon-badge"><div class="cs-dot"></div><span class="cs-label">Coming Soon</span></div>
+          </div>
+          <div class="story-body">
+            <p class="story-category">Trekking</p>
+            <h3>Brahmatal Trek — A Winter Wonderland at 12,000 ft</h3>
+            <p>Frozen lakes, snow-blanketed oak forests, and silence so deep you hear yourself think.</p>
+            <div class="story-meta">
+              <span>2021</span>
+            </div>
+          </div>
+        </div>
+        <!-- Scrambler Stories -->
+        <div class="story-card coming-soon">
+          <div class="story-img">
+            <div class="story-img-inner" style="height:140px; background:url('brand_assets/bike.jpg') center/cover no-repeat;"></div>
+            <div class="coming-soon-badge"><div class="cs-dot"></div><span class="cs-label">Coming Soon</span></div>
+          </div>
+          <div class="story-body">
+            <p class="story-category">Biking</p>
+            <h3>Scrambler Stories — Two Wheels, Open Roads, No Plan</h3>
+            <p>A Scrambler that turns every ride into a story worth telling.</p>
+            <div class="story-meta">
+              <span>Ongoing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="section-label">Let's Connect</p>
+    <h2>Come Along<br />for the Ride</h2>
+    <p>Whether you want to geek out about code, plan a trek, or just swap travel stories — my inbox is always open.</p>
+    <div class="contact-links">
+      <a href="mailto:shreekaraudupa@gmail.com" class="contact-btn primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Say Hello
+      </a>
+      <a href="#stories" class="contact-btn secondary">
+        Read My Stories
+      </a>
+    </div>
+    <div class="social-row">
+      <a href="#" class="social-link">GitHub</a>
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">LinkedIn</a>
+      <a href="#" class="social-link">Twitter / X</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Beyond <span>9 to 5</span> Stories &nbsp;·&nbsp; Shree</div>
+    <div class="footer-copy">© 2026 Shreekara Udupa. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Auto-size passion grid: 1→1col, 2→2col, 3→3col, 4→2x2, 5-6→3col, 7+→4col
+    const grid = document.querySelector('.adventures-grid');
+    const cardCount = grid.querySelectorAll('.adv-card').length;
+    const cols = cardCount <= 2 ? cardCount
+               : cardCount === 4 ? 2
+               : cardCount <= 6 ? 3
+               : 4;
+    grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+  </script>
+</body>
+</html>
