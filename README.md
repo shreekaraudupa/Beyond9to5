@@ -35,7 +35,8 @@ Personal blog by Shreekara Udupa — documenting treks, bike rides, and travels 
 ├── biking/                     # Same structure as trekking/
 ├── traveling/                  # Same structure as trekking/
 │
-├── brand_assets/               # Logo, bike.jpg, color refs — use these, not placeholders
+├── landing_page/
+│   └── photos/                     # Photos used on the homepage (profile, trekking, bike, travel)
 ├── eleventy.config.js          # Passthrough copy config for photos
 ├── package.json
 │

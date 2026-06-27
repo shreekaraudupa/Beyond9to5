@@ -6,7 +6,7 @@
   <title>{{ title | striptags }} — Beyond 9 TO 5 Stories</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg:       #131310;
@@ -30,7 +30,7 @@
     }
 
     h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       letter-spacing: -0.02em;
       line-height: 1.1;
     }
@@ -51,7 +51,7 @@
       backdrop-filter: blur(12px);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1rem;
       font-weight: 700;
       color: var(--cream);
@@ -95,8 +95,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(10, 10, 8, 0.96) 0%, rgba(10, 10, 8, 0.6) 45%, rgba(10, 10, 8, 0.15) 100%),
-        linear-gradient(to right, rgba(10, 10, 8, 0.4) 0%, transparent 60%);
+        linear-gradient(to top, rgba(10, 10, 8, 0.78) 0%, rgba(10, 10, 8, 0.45) 45%, rgba(10, 10, 8, 0.08) 100%),
+        linear-gradient(to right, rgba(10, 10, 8, 0.3) 0%, transparent 60%);
     }
     .post-header-inner {
       max-width: 860px;
@@ -136,7 +136,7 @@
       font-weight: 900;
     }
     .post-subtitle {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: clamp(1rem, 2vw, 1.4rem);
       font-weight: 400;
       font-style: italic;
@@ -214,7 +214,7 @@
       margin-bottom: 0.5rem;
     }
     .stat-value {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--cream);
@@ -226,6 +226,15 @@
       font-weight: 400;
       color: var(--amber-lt);
       margin-left: 0.1em;
+    }
+    .stat-subvalue {
+      font-size: 0.72rem;
+      color: var(--amber-lt);
+      margin-top: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+    .stat-value--text {
+      font-size: 1.4rem;
     }
 
     /* ─── Article Body ─── */
@@ -244,7 +253,7 @@
 
     /* Drop cap on first paragraph */
     .article-body > p:first-of-type::first-letter {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 5rem;
       font-weight: 900;
       line-height: 0.78;
@@ -274,7 +283,7 @@
       border-left: 2px solid var(--amber);
     }
     .pull-quote p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.4rem !important;
       font-style: italic;
       color: var(--cream) !important;
@@ -282,9 +291,14 @@
       margin-bottom: 0 !important;
     }
 
-    /* ─── Photos — break out wider than text column on desktop ─── */
+    /* ─── Photos ─── */
     .article-body img,
-    .photo-placeholder,
+    .photo-placeholder {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90vw, 520px);
+    }
     .photo-grid {
       position: relative;
       left: 50%;
@@ -297,6 +311,10 @@
       border-radius: 3px;
       margin-top: 3rem;
       margin-bottom: 0.75rem;
+    }
+    .article-body img.photo-wide,
+    .photo-placeholder.photo-wide {
+      width: min(90vw, 1060px);
     }
     .photo-placeholder {
       height: 540px;
@@ -328,7 +346,26 @@
       margin-bottom: 0.75rem;
     }
     .photo-grid .photo-placeholder { height: 340px; margin: 0; width: 100%; position: static; left: unset; transform: none; }
-    .photo-grid img { margin: 0; height: 340px; object-fit: cover; border-radius: 3px; width: 100%; position: static; left: unset; transform: none; }
+    .photo-grid img { margin: 0; height: auto; object-fit: cover; border-radius: 3px; width: 100%; position: static; left: unset; transform: none; }
+
+    /* ─── Video Embed ─── */
+    .video-embed {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90vw, 1060px);
+      aspect-ratio: 16 / 9;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 3rem;
+      margin-bottom: 0.75rem;
+    }
+    .video-embed iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
 
     /* ─── Footer ─── */
     footer {
@@ -341,12 +378,65 @@
       gap: 1rem;
     }
     .footer-brand {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Fraunces', serif;
       font-size: 0.9rem;
       color: var(--cream-faint);
     }
     .footer-brand span { color: var(--amber-lt); }
     .footer-copy { font-size: 0.68rem; color: rgba(240,232,220,0.18); }
+
+    /* ─── Lightbox ─── */
+    .article-body img { cursor: zoom-in; }
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(10, 10, 8, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 3px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+      transform: scale(0.96);
+      transition: transform 0.3s ease;
+    }
+    #lightbox.open img { transform: scale(1); }
+    #lightbox-caption {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(240, 232, 220, 0.45);
+      text-align: center;
+      max-width: 600px;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.75rem;
+      background: none;
+      border: none;
+      color: rgba(240,232,220,0.4);
+      font-size: 1.75rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      padding: 0.25rem;
+    }
+    #lightbox-close:hover { color: var(--cream); }
 
     /* ─── Responsive ─── */
     @media (max-width: 768px) {
@@ -372,7 +462,7 @@
   <!-- POST HEADER -->
   <header class="post-header">
     {% if cover %}
-    <div class="post-cover" style="background-image: url('{{ cover }}');"></div>
+    <div class="post-cover" style="background-image: url('{{ cover }}'); background-position: {{ cover_position or 'center' }};"></div>
     <div class="post-cover-overlay"></div>
     {% endif %}
     <div class="post-header-inner">
@@ -386,7 +476,7 @@
       <div class="post-byline">
         <span>Shreekara Udupa</span>
         <span class="post-byline-divider"></span>
-        <span>{{ year }}</span>
+        <span>{% if month %}{{ month }} {% endif %}{{ year }}</span>
         {% if readtime %}
         <span class="post-byline-divider"></span>
         <span>{{ readtime }} min read</span>
@@ -402,7 +492,8 @@
     {% for stat in stats %}
     <div class="stat-item">
       <p class="stat-label">{{ stat.label }}</p>
-      <p class="stat-value">{{ stat.value }}<span>{{ stat.unit }}</span></p>
+      <p class="stat-value {% if stat.text %}stat-value--text{% endif %}">{{ stat.value }}<span>{{ stat.unit }}</span></p>
+      {% if stat.sub %}<p class="stat-subvalue">{{ stat.sub }}</p>{% endif %}
     </div>
     {% endfor %}
   </div>
@@ -420,11 +511,49 @@
     <div class="footer-copy">© 2026 Shreekara Udupa. All rights reserved.</div>
   </footer>
 
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true">
+    <button id="lightbox-close" aria-label="Close">&#x2715;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+
   <script>
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, alt, caption) {
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lbCap.textContent = caption || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+
+    document.querySelectorAll('.article-body img').forEach(img => {
+      img.addEventListener('click', () => {
+        const next = img.nextElementSibling;
+        const caption = next && next.classList.contains('photo-caption') ? next.textContent : '';
+        openLightbox(img.src, img.alt, caption);
+      });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 
 </body>

@@ -3,3 +3,6 @@ _site
 .DS_Store
 temporary screenshots
 .claude
+.wrangler
+npm-debug.log*
+.env

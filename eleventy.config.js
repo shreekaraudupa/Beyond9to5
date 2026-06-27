@@ -1,5 +1,5 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("brand_assets");
+  eleventyConfig.addPassthroughCopy("landing_page/photos");
   eleventyConfig.addPassthroughCopy("trekking/**/photos");
   eleventyConfig.addPassthroughCopy("biking/**/photos");
   eleventyConfig.addPassthroughCopy("traveling/**/photos");
