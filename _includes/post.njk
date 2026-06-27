@@ -267,8 +267,7 @@
       font-size: 1.75rem;
       color: var(--cream);
       margin: 3.5rem 0 1.25rem;
-      padding-top: 3.5rem;
-      border-top: 1px solid var(--stat-divider);
+      padding-top: 1rem;
     }
     .article-body h3 {
       font-size: 1.2rem;
@@ -440,10 +439,24 @@
 
     /* ─── Responsive ─── */
     @media (max-width: 768px) {
-      .post-header { padding: 0 1.5rem 3rem; }
+      .post-header { padding: 0 1.5rem 2.5rem; }
       .scroll-hint { display: none; }
-      .stat-item { padding: 1.5rem; }
+      .post-intro { font-size: 0.9rem; line-height: 1.65; }
+      .post-byline {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        font-size: 0.6rem;
+      }
+      .post-byline-divider { display: none; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .stat-item {
+        padding: 1.25rem 1.5rem;
+        border-right: 1px solid var(--stat-divider);
+        border-bottom: 1px solid var(--stat-divider);
+      }
+      .stat-item:nth-child(even) { border-right: none; }
       .stat-value { font-size: 1.8rem; }
+      .stat-value--text { font-size: 1.2rem; }
       .article-wrap { padding: 3rem 1.5rem 5rem; }
       footer { padding: 2rem 1.5rem; }
     }

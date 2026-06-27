@@ -108,8 +108,8 @@ We started with a brown trail and in 15-20 minutes it had turned white. The tran
 First day was 6-7 hours of trekking. We were full of energy though our clothes were getting wet, some body parts already frozen, and the snowfall increasing continuously. Trek leaders were a little tense. If the snowfall continued till the next day, Brahmatal lake would be covered and the summit couldn't be done. They were thinking through every permutation and combination of alternate trails.
 
 <div class="photo-grid">
-  <div class="photo-placeholder">[ Pahadi dogs on the trail ]</div>
-  <div class="photo-placeholder">[ Hydration break ]</div>
+  <img src="photos/pahadi-dogs-trail.jpg" alt="Pahadi dogs on the trail" />
+  <img src="photos/hydration-break.jpg" alt="Hydration break on the trail" />
 </div>
 <p class="photo-caption">Pahadi dogs on the trail, and a hydration break that became a photoshoot.</p>
 
@@ -117,19 +117,24 @@ We climbed the last mountain and could see the campsite beside a frozen lake. Th
 
 ## Bekaltal Campsite at 9,690 ft
 
-<div class="photo-placeholder">[ Campsite 1 at Bekaltal ]</div>
+<img src="photos/bekaltal-campsite.jpg" alt="Campsite 1 at Bekaltal" />
 <p class="photo-caption">Campsite 1 at Bekaltal, 9,690 ft. Tent check-in: complete.</p>
 
 We did our cooldown session and then came a small lecture on AMS (Acute Mountain Sickness). Trust me, after the lecture you will feel like you have all the symptoms and should return to base camp. But hold on. Sit, let it sink in, because this is what you came for.
 
 Post the lecture we had snacks and chai, then walked 500 metres to Bekal Tal lake for sunset.
 
-<div class="photo-placeholder">[ Bekal Tal Lake ]</div>
+<img src="photos/bekaltal-lake.jpg" alt="Bekal Tal Lake" />
 <p class="photo-caption">Bekal Tal, no less than a scene from Game of Thrones.</p>
 
 This lake was the best scene of Day 1. Temperature below zero, slight winds, standing beside the frozen lake listening to stories about it. The trek leaders were sharing experiences about Roopkund trek, a similar lake filled with skeletons of extraordinary sizes, which don't look like normal human skeletons.
 
 Walking back to camp in the dark, we passed a small shop beside the campsite, a permanent shop run by a girl and her younger brother. Their customers were trekkers like us. Their parents work in the base camp, and these two run a shop at 9,700 ft without basic amenities. At that point I realised how blessed we are and how small our problems are. We voluntarily put ourselves in these harsh conditions for fun, and in a couple of days we'll be back to urban life with all the luxuries, while they work high in the mountains to make their daily living.
+
+<div class="photo-grid">
+  <img src="photos/bekaltal-campsite-evening-1.jpg" alt="Bekaltal campsite evening" />
+  <img src="photos/bekaltal-campsite-evening-2.jpg" alt="Bekaltal campsite evening" />
+</div>
 
 Post dinner: oxymeter check. At sea level a reading of 95+ is normal. At altitude, the air is thin, so 80 is normal. Everyone read between 85 and 92. And then my turn: 78. The trek leader looked concerned. Asked me to drink more water and keep them informed if I had breathing problems.
 
@@ -138,6 +143,8 @@ Fireside chats, then tents. Tents on snow, temperature in minus, tired, slightly
 ## 13th December, Trek Day 2
 
 Woke up at 6 AM after 2-3 hours of proper sleep. The sky was clear, the best news possible. First experience of dry toilets: not bad, but we had bigger problems because everything was frozen. Packing the sleeping bag and clearing the tent was a big task when your hands aren't moving and you're shivering. We got our gaiters and mini spikes for snow and were ready for Day 2.
+
+<img src="photos/trek-day-2-start.jpg" alt="Start of Day 2" />
 
 Another 6-7 hours of trekking. 2 hours to Jhandi Top, the first point where we could see Mount Trishul very closely, then 3-4 hours to Brahmatal Lake.
 
@@ -149,29 +156,31 @@ Once we reached Jhandi Top, my body was giving up slightly. The sun was out, I w
 
 I covered my face with my cap and rested. The best power nap I've ever had. Sun out after almost two days, temperature pleasant. After the nap: Snickers, protein bars, dry fruits. Lunch done.
 
-<div class="photo-placeholder">[ Power nap location ]</div>
+<img src="photos/power-nap-spot.jpg" alt="Power nap spot on the trail" />
 <p class="photo-caption">My happy place. The best power nap of my life at this exact spot.</p>
 
 I put my music on and grasped it all in. This was a moment of gratitude. I was just thankful I could witness this. We should be thankful for what we have; we will end up having more. If you concentrate on what you don't have, you will never have enough.
 
-## Campsite 2, 10,450 ft
+## Campsite 2 at 10,450 ft
 
 We could see the summit peak from our campsite. No shop here like the previous one, which meant no fire for rescue. We requested a bonfire but forest authorities don't allow it. No option but to bear the cold.
 
 The campsite was set up below the summit mountain, 500 metres from Brahmatal Lake. Open area, strong winds, temperature around -5°C and predicted to drop to -10°C overnight. Getting out of the tent to reach the kitchen area was already difficult. Socks wet from snow, shoes frozen. I couldn't feel my feet for two straight days.
 
-<div class="photo-placeholder">[ Campsite 2 ]</div>
+<img src="photos/campsite-2.jpg" alt="Campsite 2 at 10,450 ft" />
 <p class="photo-caption">Campsite 2 at 10,450 ft. We could see the summit from here.</p>
 
 The food from Trek the Himalayas was amazing: soup, Maggi, chai, and at the second campsite, Jalebi. Everyone shivering in the dining area, eating Jalebi at 10,450 ft. That's a memory.
 
 The sky was clear. It was the Geminids meteor shower night. Temperature dipping further due to cold winds, reaching -10°C. Everyone had the same question: how will we survive this night? We'd planned this trek partly for the meteor shower, which would peak around 3 AM.
 
+<img src="photos/campsite-night.jpg" alt="Campsite at night" />
+
 Finished dinner by 8 PM and went to camps to sleep early. My camp mate was feeling a little feverish. I too wasn't sure what my body was going through. We decided to wake up at 2:30 AM.
 
 ## 2:30 AM, The Geminids
 
-<div class="photo-placeholder">[ Geminids meteor shower ]</div>
+<img src="photos/geminids-meteor-shower.jpg" alt="Geminids meteor shower at Brahmatal Lake" class="photo-wide" />
 <p class="photo-caption">Geminids meteor shower captured by @Kaustubh, Brahmatal Lake.</p>
 
 At 2:30 AM I somehow gathered the motivation and energy to come out of the warm sleeping bag and step into the wind. It was majestic outside, millions of stars, and every 5 to 10 seconds a shooting star.
@@ -187,8 +196,8 @@ Again woke up at 6 AM. The original plan was to summit in the morning and halt a
 
 9 AM, we packed our bags, visited Brahmatal lake, and started the Summit Day trek. We could see the summit from camp, and it seemed to rise higher as we got closer to it. After almost 2 hours of ascent we reached the summit at 12,000 ft.
 
-<div class="photo-placeholder">[ Summit at 12,000 ft ]</div>
-<p class="photo-caption">Brahmatal Trek Summit at 12,000 ft. The highest altitude I had been to.</p>
+<img src="photos/brahmatal-summit.jpg" alt="Brahmatal Summit at 12,000 ft" class="photo-wide" />
+<p class="photo-caption">Brahmatal Trek Summit at 12,300 ft.</p>
 
 Mount Trishul and Nandagunti, up close. It was magnificent. The highest altitude I had been to, and a genuinely proud moment. At that moment everything was calm and stable, and it brought calmness and satisfaction in myself.
 
@@ -197,10 +206,10 @@ Oh, how can I put into words the scenes that delight the eyes, the blessed peace
 The plan was to spend 15 minutes on the summit and then leave. We spent more than 1 hour clicking pictures and creating memories. We still didn't want to leave.
 
 <div class="photo-grid">
-  <div class="photo-placeholder">[ Summit group photo ]</div>
-  <div class="photo-placeholder">[ Mount Trishul view ]</div>
+  <img src="photos/summit-group-photo.jpg" alt="Summit group photo" />
+  <img src="photos/mount-trishul-view.jpg" alt="Mount Trishul view from the summit" />
 </div>
-<p class="photo-caption">Group photos at the summit. Mount Trishul on the right.</p>
+<p class="photo-caption">Summit smiles, Mount Trishul in the background.</p>
 
 I sat there for around 10 minutes and grasped all that was possible. Thanked god for creating this, and for being able to witness it. It was not an easy journey, and that is the only reason it was extra special.
 
@@ -208,15 +217,18 @@ I sat there for around 10 minutes and grasped all that was possible. Thanked god
 
 Around 1 PM we started the descent. The previous trails were all covered with snow so we had to mark our own trail. First stop: Jhandi Top. Then the campsite we were supposed to stay at, but skipped, and straight to base camp. We reached base camp around 6:30 PM, dark by then, but we had spent some extra time watching the sunset on the way down.
 
-<div class="photo-placeholder">[ Sunset during descent ]</div>
+<img src="photos/descent-sunset.jpg" alt="Sunset during descent" />
 <p class="photo-caption">The last sunset at Lohajung, marking the end of the Brahmatal Trek.</p>
 
 The last sunset at Lohajung marked the end of our Himalayan journey.
 
 Me and my friend couldn't believe it had ended and that we had to go back to civilisation. Due to all the stress before the trek and the freezing nights in tents, we had questioned ourselves why we came. All our friends questioned why put so much effort, who tires themselves out on a vacation? But at that moment we had answers to all those questions.
 
-<div class="photo-placeholder">[ Felicitation ceremony ]</div>
-<p class="photo-caption">First Himalayan summit. 4 day trek in 3.</p>
+<div class="photo-grid">
+  <img src="photos/felicitation-ceremony.jpg" alt="Felicitation ceremony" />
+  <img src="photos/trek-leaders.jpg" alt="With the trek leaders" />
+</div>
+<p class="photo-caption">Felicitation ceremony with the trek leaders. First Himalayan summit, 4 day trek in 3.</p>
 
 The happiness on our face explains everything. Very proud that we summited our first Himalayan trek without any complications. We completed a 4-day trek in 3 days.
 
@@ -231,7 +243,6 @@ That, and go in December, when the world is covered in snow, and the meteor show
 <div class="video-embed">
   <iframe src="https://www.youtube.com/embed/LNBvrHTKZCg" title="First Himalayan Trek, Brahmatal Uttarakhand | December 2020" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="photo-caption">First Himalayan Trek, Brahmatal Uttarakhand | December 2020</p>
 
 <div class="video-embed">
   <iframe src="https://www.youtube.com/embed/XPN4n4KwsS0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
