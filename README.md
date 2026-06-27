@@ -135,27 +135,26 @@ Photos automatically break out wider than the text column on desktop.
 
 ## Deployment
 
-### Current setup (manual)
+Live URL: **[beyond9to5.pages.dev](https://beyond9to5.pages.dev)**
 
-1. Make changes locally
-2. `npm run build` — outputs to `_site/`
-3. Push to GitHub: `git push`
-4. Deploy to Cloudflare manually — two options:
-   - **Dashboard:** [dash.cloudflare.com](https://dash.cloudflare.com) → Workers & Pages → `beyond9to5` → Deployments → upload `_site/`
-   - **CLI:** `npx wrangler deploy`
+### Deploy manually (current workflow)
 
-Live URL: `beyond9to5.shreekaraudupa.workers.dev`
+```bash
+npm run build
+npx wrangler pages deploy _site --project-name beyond9to5 --commit-dirty=true
+```
 
-### Planned: Cloudflare Pages (auto-deploy)
+That's it. Build → deploy. Push to GitHub separately with `git push`.
 
-When the site is ready for auto-deploy, switch from Workers to **Cloudflare Pages**:
+### Switch to auto-deploy (when ready)
 
-- Connect the GitHub repo in the Cloudflare Pages dashboard
-- Build command: `npm run build`
-- Output directory: `_site`
-- Every `git push` to `main` will trigger a build and deploy automatically
+Connect the GitHub repo to Cloudflare Pages so every `git push` deploys automatically:
 
-Until then, deployments are intentional and manual — push code often, deploy only when there's something significant.
+1. Go to [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → `beyond9to5` → **Settings** → **Builds & Deployments**
+2. Connect to GitHub → select `shreekaraudupa/Beyond9to5`
+3. Build command: `npm run build`
+4. Output directory: `_site`
+5. Save — from then on every push to `main` deploys automatically
 
 ---
 
