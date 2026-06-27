@@ -3,44 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} — Beyond 9 TO 5 Stories</title>
+  <title>{{ title | striptags }} — Beyond 9 TO 5 Stories</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --forest:   #1a1614;
-      --canopy:   #2a2220;
+      --bg:       #131310;
+      --canopy:   #1e1c18;
       --amber:    #c2502a;
-      --amber-lt: #d96b3e;
-      --stone:    #1e1a18;
-      --cream:    #f5ede4;
-      --cream-lt: #faf6f3;
+      --amber-lt: #d4761f;
+      --cream:    #f0e8dc;
+      --cream-dim: rgba(240, 232, 220, 0.55);
+      --cream-faint: rgba(240, 232, 220, 0.28);
+      --stat-divider: rgba(240, 232, 220, 0.1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--forest);
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M24 2 L46 24 L24 46 L2 24 Z' fill='none' stroke='rgba(255,255,255,0.032)' stroke-width='0.75'/%3E%3C/svg%3E");
       color: var(--cream);
       line-height: 1.7;
     }
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     /* ─── Nav ─── */
@@ -55,12 +47,12 @@
       transition: background 0.4s ease, backdrop-filter 0.4s ease;
     }
     nav.scrolled {
-      background: rgba(26, 22, 20, 0.92);
+      background: rgba(19, 19, 16, 0.92);
       backdrop-filter: blur(12px);
     }
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--cream);
       letter-spacing: -0.02em;
@@ -68,11 +60,11 @@
     }
     .nav-logo span { color: var(--amber-lt); }
     .nav-back {
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(245, 237, 228, 0.6);
+      color: var(--cream-faint);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -81,159 +73,267 @@
     }
     .nav-back:hover { color: var(--amber-lt); }
 
-    /* ─── Hero ─── */
-    .hero {
-      position: relative;
-      height: 92vh;
-      min-height: 560px;
+    /* ─── Hero Header ─── */
+    .post-header {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 5rem 2.5rem 4rem;
+      padding: 0 6vw 4rem;
+      position: relative;
       overflow: hidden;
     }
-    .hero-img {
+    .post-cover {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #0f2018 0%, #07120d 50%, #121a10 100%);
       background-size: cover;
       background-position: center;
+      transform: scale(1.04);
+      transition: transform 8s ease;
     }
-    .hero-overlay {
+    .post-cover-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(10, 7, 5, 0.97) 0%, rgba(10, 7, 5, 0.55) 40%, rgba(10, 7, 5, 0.1) 100%),
-        linear-gradient(to right, rgba(10, 7, 5, 0.5) 0%, transparent 60%);
+        linear-gradient(to top, rgba(10, 10, 8, 0.96) 0%, rgba(10, 10, 8, 0.6) 45%, rgba(10, 10, 8, 0.15) 100%),
+        linear-gradient(to right, rgba(10, 10, 8, 0.4) 0%, transparent 60%);
     }
-    .hero-content {
+    .post-header-inner {
+      max-width: 860px;
+      padding-bottom: 0.5rem;
       position: relative;
       z-index: 2;
-      max-width: 780px;
     }
-    .hero-category {
+    .post-category {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--cream-dim);
+      margin-bottom: 1.5rem;
+    }
+    .post-category-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--amber-lt);
+      flex-shrink: 0;
+    }
+    .post-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    .post-title em {
+      font-style: italic;
       color: var(--amber-lt);
-      margin-bottom: 1rem;
+      font-weight: 900;
+    }
+    .post-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-dim);
+      letter-spacing: 0.01em;
+      margin-bottom: 1.5rem;
+      margin-top: -0.5rem;
+    }
+    .post-subtitle em {
+      color: var(--amber-lt);
+      font-style: italic;
+    }
+    .post-intro {
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 1.75rem;
+    }
+    .post-byline {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+    }
+    .post-byline-divider {
+      width: 1px;
+      height: 12px;
+      background: var(--cream-faint);
+    }
+    .scroll-hint {
+      position: absolute;
+      right: 6vw;
+      bottom: 4rem;
+      z-index: 2;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-    .hero-category::before {
+    .scroll-hint::after {
       content: '';
       display: block;
-      width: 24px;
+      width: 40px;
       height: 1px;
-      background: var(--amber-lt);
+      background: var(--cream-faint);
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      color: var(--cream);
-      margin-bottom: 1.25rem;
-      max-width: 680px;
-    }
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      font-size: 0.75rem;
-      color: rgba(245, 237, 228, 0.45);
-      letter-spacing: 0.04em;
-    }
-    .hero-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; }
 
-    /* ─── Article ─── */
-    .article-wrap {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+    /* ─── Stats Bar ─── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      border-top: 1px solid var(--stat-divider);
+      border-bottom: 1px solid var(--stat-divider);
+      margin: 0;
     }
-    .article-intro {
-      font-size: 1.15rem;
-      color: rgba(245, 237, 228, 0.75);
-      line-height: 1.85;
-      margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(245, 237, 228, 0.08);
+    .stat-item {
+      padding: 2rem 3rem;
+      border-right: 1px solid var(--stat-divider);
     }
-    .article-body p {
-      font-size: 0.95rem;
-      color: rgba(245, 237, 228, 0.62);
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
+    .stat-item:last-child { border-right: none; }
+    .stat-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      margin-bottom: 0.5rem;
     }
-    .article-body h2 {
-      font-size: 1.6rem;
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
       color: var(--cream);
-      margin: 3rem 0 1.25rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-value span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--amber-lt);
+      margin-left: 0.1em;
+    }
+
+    /* ─── Article Body ─── */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 7rem;
+    }
+
+    .article-body p {
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      line-height: 1.85;
+      margin-bottom: 1.85rem;
+    }
+
+    /* Drop cap on first paragraph */
+    .article-body > p:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 0.78;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.08em;
+      color: var(--amber-lt);
+    }
+
+    .article-body h2 {
+      font-size: 1.75rem;
+      color: var(--cream);
+      margin: 3.5rem 0 1.25rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--stat-divider);
     }
     .article-body h3 {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--cream);
-      margin: 2.25rem 0 0.75rem;
+      margin: 2.5rem 0 0.75rem;
     }
 
-    /* ─── Pull quote ─── */
+    /* ─── Pull Quote ─── */
     .pull-quote {
+      margin: 3rem 0;
+      padding-left: 1.75rem;
       border-left: 2px solid var(--amber);
-      padding: 0.75rem 0 0.75rem 1.75rem;
-      margin: 2.5rem 0;
     }
     .pull-quote p {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem !important;
+      font-size: 1.4rem !important;
       font-style: italic;
       color: var(--cream) !important;
-      line-height: 1.5 !important;
+      line-height: 1.45 !important;
       margin-bottom: 0 !important;
     }
 
-    /* ─── Photos ─── */
+    /* ─── Photos — break out wider than text column on desktop ─── */
+    .article-body img,
+    .photo-placeholder,
+    .photo-grid {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90vw, 1060px);
+    }
     .article-body img {
-      width: 100%;
       height: auto;
       display: block;
-      border-radius: 4px;
-      margin: 2.5rem 0;
+      border-radius: 3px;
+      margin-top: 3rem;
+      margin-bottom: 0.75rem;
     }
     .photo-placeholder {
-      width: 100%;
-      height: 420px;
+      height: 540px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(245, 237, 228, 0.2);
+      color: var(--cream-faint);
       background: var(--canopy);
-      border-radius: 4px;
-      margin: 2.5rem 0;
+      border-radius: 3px;
+      margin-top: 3rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(240,232,220,0.06);
     }
     .photo-caption {
-      font-size: 0.7rem;
-      color: rgba(245, 237, 228, 0.3);
+      font-size: 0.68rem;
+      color: var(--cream-faint);
       text-align: center;
-      margin-top: -1.75rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       letter-spacing: 0.04em;
     }
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin: 2.5rem 0;
+      gap: 0.5rem;
+      margin-top: 3rem;
+      margin-bottom: 0.75rem;
     }
-    .photo-grid .photo-placeholder { height: 240px; margin: 0; }
-    .photo-grid img { margin: 0; height: 240px; object-fit: cover; }
+    .photo-grid .photo-placeholder { height: 340px; margin: 0; width: 100%; position: static; left: unset; transform: none; }
+    .photo-grid img { margin: 0; height: 340px; object-fit: cover; border-radius: 3px; width: 100%; position: static; left: unset; transform: none; }
 
     /* ─── Footer ─── */
     footer {
-      border-top: 1px solid rgba(245, 237, 228, 0.07);
-      padding: 2.5rem;
+      border-top: 1px solid var(--stat-divider);
+      padding: 2.5rem 6vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -242,11 +342,21 @@
     }
     .footer-brand {
       font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      color: rgba(245, 237, 228, 0.4);
+      font-size: 0.9rem;
+      color: var(--cream-faint);
     }
     .footer-brand span { color: var(--amber-lt); }
-    .footer-copy { font-size: 0.72rem; color: rgba(245, 237, 228, 0.22); }
+    .footer-copy { font-size: 0.68rem; color: rgba(240,232,220,0.18); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .post-header { padding: 0 1.5rem 3rem; }
+      .scroll-hint { display: none; }
+      .stat-item { padding: 1.5rem; }
+      .stat-value { font-size: 1.8rem; }
+      .article-wrap { padding: 3rem 1.5rem 5rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -259,22 +369,47 @@
     </a>
   </nav>
 
-  <section class="hero">
-    <div class="hero-img"{% if cover %} style="background-image: url('{{ cover }}'); background-size: cover; background-position: center;"{% endif %}></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-category">{{ category }}</p>
-      <h1>{{ title }}</h1>
-      <div class="hero-meta">
+  <!-- POST HEADER -->
+  <header class="post-header">
+    {% if cover %}
+    <div class="post-cover" style="background-image: url('{{ cover }}');"></div>
+    <div class="post-cover-overlay"></div>
+    {% endif %}
+    <div class="post-header-inner">
+      <p class="post-category">
+        <span class="post-category-dot"></span>
+        {{ category }}
+      </p>
+      <h1 class="post-title">{{ title | safe }}</h1>
+      {% if subtitle %}<p class="post-subtitle">{{ subtitle | safe }}</p>{% endif %}
+      {% if intro %}<p class="post-intro">{{ intro }}</p>{% endif %}
+      <div class="post-byline">
+        <span>Shreekara Udupa</span>
+        <span class="post-byline-divider"></span>
         <span>{{ year }}</span>
-        {% if location %}<span class="hero-meta-dot"></span><span>{{ location }}</span>{% endif %}
-        {% if duration %}<span class="hero-meta-dot"></span><span>{{ duration }}</span>{% endif %}
+        {% if readtime %}
+        <span class="post-byline-divider"></span>
+        <span>{{ readtime }} min read</span>
+        {% endif %}
       </div>
     </div>
-  </section>
+    <div class="scroll-hint">Scroll</div>
+  </header>
 
+  <!-- STATS BAR (trekking only) -->
+  {% if stats %}
+  <div class="stats-bar">
+    {% for stat in stats %}
+    <div class="stat-item">
+      <p class="stat-label">{{ stat.label }}</p>
+      <p class="stat-value">{{ stat.value }}<span>{{ stat.unit }}</span></p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- ARTICLE -->
   <article class="article-wrap">
-    {% if intro %}<p class="article-intro">{{ intro }}</p>{% endif %}
     <div class="article-body">
       {{ content | safe }}
     </div>

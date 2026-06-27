@@ -1,11 +1,25 @@
 ---
 layout: post.njk
-title: Bali Pass Trek — Crossing 16,200 ft in the Heart of Garhwal
+title: "Bali Pass"
+subtitle: "A Himalayan dream. The tallest I've ever stood."
 category: Trekking
 year: 2026
-location: Uttarakhand, India
-duration: 7 day trek
+readtime: 12
+cover: photos/cover.jpg
 intro: Placeholder intro — write a punchy 2–3 line opener that drops the reader right into the moment. The smell of the air, the weight of the pack, the first view of the pass. Edit this when you're ready.
+stats:
+  - label: Max Altitude
+    value: "4,940"
+    unit: m
+  - label: Distance
+    value: "52"
+    unit: km
+  - label: Duration
+    value: "7"
+    unit: days
+  - label: Elevation Gain
+    value: "3,200"
+    unit: m
 ---
 
 <div class="photo-placeholder">[ Cover photo — photos/cover.jpg ]</div>
