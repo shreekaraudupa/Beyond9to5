@@ -10,10 +10,6 @@ cover: photos/brahmatal-cover.jpg
 cover_position: center 70%
 intro: "Nothing is certain during a pandemic. Plans change, strangers become family, memories run through the veins, and the experience becomes the motivation for another trek. Adrenaline rush and mini heart attacks? Those are just cameos."
 stats:
-  - label: Location
-    value: "Uttarakhand"
-    unit: ""
-    text: true
   - label: Max Altitude
     value: "12,300"
     unit: ft
@@ -36,6 +32,9 @@ This being my debut blog, brace yourself for a long journey to 12,000 ft above s
 The day was 24th October 2020, when a group was created by one of my friends who had decided to do a trek in the Himalayas way back in January, when we were unaware of how 2020 was going to be. Initially there were 4 people in the group but after people joining in and dropping out, the final count was 6. Little did we know that stress, chaos and adventure had joined our group too.
 
 Even after knowing the great lockdown, inter-state travelling restrictions and non-functional public transport, our unfit, adventurous and optimistic group went ahead and booked the trek with "Trek the Himalayas." After a lot of Google searches and a hell lot of YouTube videos, I realised I need to get fit first, and started my cycling and running. I was not even close to the expected stamina for the trek, but the workout helped me keep my muscles loose.
+
+<img src="photos/dreaming-himalayas.jpg" alt="Dreaming about the Himalayas" />
+<p class="photo-caption">Dreaming about the Himalayas.</p>
 
 So the final plan was devised: Flight to Delhi, by road to Lohajung base camp, Trek, by road Munsiyari, by road Mukteshwar, back to Delhi. We were travelling more than 1,300 km by road and we didn't think twice, because we knew how heavenly the destination was going to be.
 
@@ -180,7 +179,7 @@ Finished dinner by 8 PM and went to camps to sleep early. My camp mate was feeli
 
 ## 2:30 AM, The Geminids
 
-<img src="photos/geminids-meteor-shower.jpg" alt="Geminids meteor shower at Brahmatal Lake" class="photo-wide" />
+<img src="photos/geminids-meteor-shower.jpg" alt="Geminids meteor shower at Brahmatal Lake" />
 <p class="photo-caption">Geminids meteor shower captured by @Kaustubh, Brahmatal Lake.</p>
 
 At 2:30 AM I somehow gathered the motivation and energy to come out of the warm sleeping bag and step into the wind. It was majestic outside, millions of stars, and every 5 to 10 seconds a shooting star.
@@ -196,7 +195,7 @@ Again woke up at 6 AM. The original plan was to summit in the morning and halt a
 
 9 AM, we packed our bags, visited Brahmatal lake, and started the Summit Day trek. We could see the summit from camp, and it seemed to rise higher as we got closer to it. After almost 2 hours of ascent we reached the summit at 12,000 ft.
 
-<img src="photos/brahmatal-summit.jpg" alt="Brahmatal Summit at 12,000 ft" class="photo-wide" />
+<img src="photos/brahmatal-summit.jpg" alt="Brahmatal Summit at 12,000 ft" />
 <p class="photo-caption">Brahmatal Trek Summit at 12,300 ft.</p>
 
 Mount Trishul and Nandagunti, up close. It was magnificent. The highest altitude I had been to, and a genuinely proud moment. At that moment everything was calm and stable, and it brought calmness and satisfaction in myself.
@@ -212,6 +211,12 @@ The plan was to spend 15 minutes on the summit and then leave. We spent more tha
 <p class="photo-caption">Summit smiles, Mount Trishul in the background.</p>
 
 I sat there for around 10 minutes and grasped all that was possible. Thanked god for creating this, and for being able to witness it. It was not an easy journey, and that is the only reason it was extra special.
+
+<div class="photo-grid">
+  <img src="photos/brahmatal-lake-frozen.jpg" alt="Brahmatal lake, completely frozen" />
+  <img src="photos/frozen-lake.jpg" alt="Frozen lake at Brahmatal" />
+</div>
+<p class="photo-caption">Brahmatal lake, completely frozen.</p>
 
 ## The Descent
 
